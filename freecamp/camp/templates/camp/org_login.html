@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block content %}
+<form action = "/camp/org_logged/" method="POST">  {% csrf_token %}
+    <center>
+        <h3>Orgaination's login</h3><br>
+        <p>username</p><br>
+        <input type = 'text' name = 'username' placeholder = 'username'>
+        <br><br>
+        <p>password</p><br>
+        <input type="password" name = "password" >
+        <br><br>
+
+        <button type = submit>Login</button>
+        <a href="/camp/org_sign/">dont have account? sign in</a>
+
+    </center>
+</form>
+{% endblock %}

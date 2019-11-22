@@ -1,0 +1,77 @@
+{% extends "base.html" %}
+
+{% block content %}
+<center><h1>Doctor's sign in</h1>
+    <form onsubmit="return validate()" action = "/camp/doc_signed/" name = "sign_in" method = "POST">    {% csrf_token %}
+        <p>your name</p>
+        <input type = "text" name = "yourname" placeholder="yourname">
+        <br>
+         <p>username</p>
+        <input type = "text" name = "username" placeholder="username">
+        <br>
+        <p>password</p>
+        <input type = "password" name = "password" placeholder="password">
+        <br> 
+        <p>specialization</p>
+        <input type = "text" name = "specialization" placeholder="specialization">
+        <br>
+         <p>city</p>
+        <input type = "text" name = "city" placeholder="city">
+        <br>
+         <p>phone</p>
+        <input type = "text" name = "phone" placeholder="phone">
+        <br>
+        <p>email</p>
+        <input type = "text" name = "email" placeholder="email">
+        <br>
+
+        <button type = submit>Sign in</button>
+
+    </form>
+</center>
+
+<script>
+        function validate()
+        {
+            var password = document.forms["sign_in"]["password"].value
+            if(password =="")
+            {
+                alert("Enter the password")
+                return false
+            }
+            if(password.length < 6)
+            {
+                alert("Minimum 6 characters")
+                return false
+            }
+            re = /[0-9]/
+            //    /[0-9]/ is an array from 0 to 9
+            if(!re.test(password))
+            {
+                //test in-built function
+                //if there is atleast 1 character present in re is present in password it returns true
+                alert("Password should contain atleast one digit")
+                return false
+            }
+            re = /[A-Z]/
+           
+            if(!re.test(password))
+            {
+                alert("Password should contain atleast one Upper case letter")
+                return false
+            }
+            re = /[!@#$%^&*]/
+           
+            if(!re.test(password))
+            {
+                alert("Password should contain atleast one special character")
+                return false
+            }
+            else{
+                alert("password accepted")
+                return true
+            }
+        }
+    </script>
+
+{% endblock %}
